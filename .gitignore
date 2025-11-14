@@ -34,6 +34,7 @@ build/
 .DS_Store
 Thumbs.db
 
+
 # ───────────────
 # OPTIONAL — IGNORE LARGE PUBLIC FILES
 # (Remove this if you want ALL public assets in Git)
