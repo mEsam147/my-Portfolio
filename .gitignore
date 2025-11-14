@@ -1,0 +1,42 @@
+# ───────────────
+# NODE / DEPENDENCIES
+# ───────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ───────────────
+# ENVIRONMENT FILES
+# ───────────────
+.env
+.env.*
+!.env.example
+
+# ───────────────
+# NEXT.JS BUILD FILES
+# ───────────────
+.next/
+out/
+dist/
+build/
+
+# ───────────────
+# NEXT.JS CACHE
+# ───────────────
+.vercel/
+.turbo/
+.cache/
+
+# ───────────────
+# OS FILES
+# ───────────────
+.DS_Store
+Thumbs.db
+
+# ───────────────
+# OPTIONAL — IGNORE LARGE PUBLIC FILES
+# (Remove this if you want ALL public assets in Git)
+# ───────────────
+# public/uploads
+# public/temp
