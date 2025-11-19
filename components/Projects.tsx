@@ -30,8 +30,8 @@ export const projects = [
   {
     title: "Threads Clone",
     description: "A real-time chat application built with the MERN stack and Socket.IO. Supports instant messaging, live updates, multiple chat rooms, and responsive design. Includes user authentication, dynamic conversations, and smooth real-time interactions for an authentic chat experience.",
-    image: "/projects/threads.png",
-    link: "https://threads.example.com",
+    image: "/threads.png",
+    link: "https://new-threads-clone-production.up.railway.app",
     tags: ["MongoDB", "Express", "React", "Node.js", "Socket.IO", "Tailwind", "Realtime", "Auth"],
     hasGithub:true
   },
@@ -46,8 +46,8 @@ export const projects = [
   {
     title: "Udemy Clone",
     description: "Full-stack online learning platform replicating Udemy. Features include course management, video streaming, payments, user authentication, and role-based dashboards for students, instructors, and admins with proper permissions. Designed for seamless interaction and responsive UI.",
-    image: "/projects/udemy-clone.png",
-    link: "https://github.com/yourusername/udemy-clone",
+    image: "/udemy.png",
+    link: "https://udemy-clone-sigma.vercel.app",
     tags: [
       "Next.js",
       "React",
@@ -69,8 +69,8 @@ export const projects = [
   {
     title: "NextMart",
     description: "Full-stack e-commerce platform built with Next.js and MERN stack. Features include product catalog, shopping cart, wishlist, secure checkout, user authentication, and an admin dashboard for managing products, orders, and users. Designed with modern UI and seamless multi-device experience.",
-    image: "/projects/nextmart.png",
-    link: "https://github.com/yourusername/nextmart",
+    image: "/nextmart.png",
+    link: "https://new-ecommerce-5j95.vercel.app",
     tags: [
       "Next.js",
       "React",
@@ -89,8 +89,8 @@ export const projects = [
   {
     title: "LinkedIn Clone",
     description: "Full-stack professional networking platform replicating LinkedIn. Includes user authentication, profile management, post creation, real-time feed updates, connections, messaging, and responsive design. Built with modern MERN stack architecture for a seamless user experience.",
-    image: "/projects/linkedin-clone.png",
-    link: "https://github.com/yourusername/linkedin-clone",
+    image: "/linkedin.png",
+    link: "https://new-linkedin-clone-production.up.railway.app",
     tags: [
       "React",
       "Node.js",
@@ -105,13 +105,7 @@ export const projects = [
     ],
     hasGithub: true
   },
-  {
-    title: "Social Media Analytics",
-    description: "Analytics platform for social media performance tracking.",
-    image: "/projects/analytics.png",
-    link: "https://github.com/yourusername/analytics",
-    tags: ["React", "D3.js", "Express", "PostgreSQL"]
-  }
+
 ]
 
 // Predefined positions for stars
@@ -506,7 +500,7 @@ export default function Projects() {
                 backgroundImage: `linear-gradient(to right, ${colors.accents.cyan}, ${colors.accents.purple})`
               }}
             >
-              Featured Work
+              {t('projects.badge')}
             </span>
           </motion.div>
 
@@ -535,7 +529,7 @@ export default function Projects() {
             className="text-xl max-w-2xl mx-auto leading-relaxed font-light"
             style={{ color: resolvedTheme === 'dark' ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.8)' }}
           >
-            A collection of my recent projects that showcase my skills in modern web development
+            {t('projects.subtitle')}
           </motion.p>
         </motion.div>
 
@@ -593,14 +587,14 @@ export default function Projects() {
                     {project.hasGithub && (
                       <Button asChild variant="outline" size="sm" className="w-full rounded-xl backdrop-blur-sm border-2 flex items-center justify-center gap-2">
                         <a href={project.link} target='_blank'>
-                          <Github className="h-4 w-4" /> Code
+                          <Github className="h-4 w-4" /> {t('projects.sourceCode')}
                         </a>
                       </Button>
                     )}
 
                     <Button asChild size="sm" className="w-full rounded-xl text-white shadow-lg border-0 flex items-center justify-center gap-2" style={{ background: `linear-gradient(to right, ${colors.accents.blue}, ${colors.accents.purple})` }}>
                       <a href={project.link} target='_blank'>
-                        <ExternalLink className="h-4 w-4" /> Live Demo
+                        <ExternalLink className="h-4 w-4" /> {t('projects.liveDemo')}
                       </a>
                     </Button>
                   </div>
@@ -640,7 +634,7 @@ export default function Projects() {
                 transition={{ duration: 0.8 }}
               />
               <span className="relative z-10 flex items-center gap-3">
-                View All Projects
+                {t('projects.cta')}
                 <motion.div
                   animate={{ x: [0, 5, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
@@ -659,7 +653,7 @@ export default function Projects() {
             className="mt-4 text-sm"
             style={{ color: resolvedTheme === 'dark' ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)' }}
           >
-            Interested in working together? Let's discuss your next project
+            {t('projects.description')}
           </motion.p>
         </motion.div>
       </div>

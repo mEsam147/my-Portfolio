@@ -1,4 +1,5 @@
 "use client"
+
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { useLocale } from '@/i18n/useLocale'
 import { useRef, useEffect, useState } from 'react'
@@ -148,19 +149,19 @@ export default function Skills() {
 
   const skillCategories = [
     {
-      title: "Frontend & 3D",
+      title: t('skills.categories.frontend'),
       icon: Palette,
-      skills: ["React", "Next.js", "TypeScript", "Three.js", "WebGL", "Framer Motion", "Tailwind CSS", "WebXR", "AR/VR", "GSAP", "Shaders", "Canvas API"]
+      skills: ["React", "Next.js", "TypeScript", "Framer Motion", "Tailwind CSS", "GSAP", "Shaders", "Canvas API"]
     },
     {
-      title: "Backend ",
+      title: t('skills.categories.backend'),
       icon: Server,
-      skills: ["Node.js", "Express.js", "MongoDB", "Mongoose", "REST APIs", "GraphQL", "JWT", "Socket.io", "Redis", "PostgreSQL", "MySQL", "Docker"]
+      skills: ["Node.js", "Express.js", "MongoDB", "Mongoose", "REST APIs", "GraphQL", "JWT", "Socket.io", "Redis", "PostgreSQL", "MySQL"]
     },
     {
-      title: "DevOps & Cloud",
+      title: t('skills.categories.devops'),
       icon: Cloud,
-      skills: ["AWS", "Vercel", "Netlify", "CI/CD", "GitHub Actions", "Nginx", "Linux"]
+      skills: ["AWS", "Vercel", "Netlify", "GitHub Actions", "Linux"]
     }
   ]
 
@@ -423,7 +424,7 @@ export default function Skills() {
               <Zap className="w-5 h-5 text-blue-500" />
             </motion.div>
             <span className="text-lg font-semibold text-blue-500 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
-              Technical Expertise
+              {t('skills.badge')}
             </span>
           </motion.div>
 
@@ -446,7 +447,7 @@ export default function Skills() {
             viewport={{ once: true }}
             className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed font-light"
           >
-            Mastering modern technologies to build scalable and performant applications
+            {t('skills.subtitle')}
           </motion.p>
         </motion.div>
 
@@ -462,7 +463,7 @@ export default function Skills() {
             className="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-3 text-gray-900 dark:text-white"
           >
             <Server className="w-8 h-8 text-blue-500" />
-            MERN Stack Specialist
+            {t('skills.mern')}
           </motion.h3>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -541,7 +542,7 @@ export default function Skills() {
               className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3"
             >
               <Target className="w-6 h-6 text-blue-500" />
-              Core Competencies
+              {t('skills.core')}
             </motion.h3>
 
             {skillsData.map((skill, index) => (
@@ -610,7 +611,7 @@ export default function Skills() {
               className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3"
             >
               <TrendingUp className="w-6 h-6 text-blue-500" />
-              Technology Stack
+              {t('skills.techStack')}
             </motion.h3>
 
             <div className="grid grid-cols-2 gap-4">
@@ -812,7 +813,7 @@ export default function Skills() {
                 transition={{ duration: 0.8 }}
               />
               <span className="relative z-10 flex items-center gap-3">
-                Start a Project
+                {t('skills.cta')}
                 <motion.div
                   animate={{ rotate: [0, 360] }}
                   transition={{ duration: 2, repeat: Infinity }}

@@ -1,15 +1,17 @@
 "use client"
 
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { Github, Linkedin, Twitter, Mail, Heart, Sparkles, ArrowUp, Code2, Coffee } from 'lucide-react'
+import { Github, Linkedin, Mail, Heart, Sparkles, ArrowUp, Code2, Coffee } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useRef, useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
+import { useLocale } from '@/i18n/useLocale'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
   const footerRef = useRef<HTMLElement>(null)
   const { theme, resolvedTheme } = useTheme()
+  const { t, locale } = useLocale()
   const [mounted, setMounted] = useState(false)
 
   // Handle theme mounting
@@ -17,7 +19,7 @@ export default function Footer() {
     setMounted(true)
   }, [])
 
-  // تأثيرات الماوس للخلفية
+  // Mouse effects for background
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
   const cursorX = useSpring(mouseX, { stiffness: 100, damping: 30 })
@@ -70,36 +72,30 @@ export default function Footer() {
   const socialLinks = [
     {
       icon: Github,
-      href: "https://github.com/yourusername",
+      href: "https://github.com/mEsam147",
       name: "GitHub",
       color: resolvedTheme === 'dark' ? "hover:bg-gray-800" : "hover:bg-gray-900 hover:text-white"
     },
     {
       icon: Linkedin,
-      href: "https://linkedin.com/in/yourusername",
+      href: "https://www.linkedin.com/in/mohamed-esam-97874533a/",
       name: "LinkedIn",
       color: resolvedTheme === 'dark' ? "hover:bg-blue-700" : "hover:bg-blue-600 hover:text-white"
     },
     {
-      icon: Twitter,
-      href: "https://twitter.com/yourusername",
-      name: "Twitter",
-      color: resolvedTheme === 'dark' ? "hover:bg-sky-700" : "hover:bg-sky-500 hover:text-white"
-    },
-    {
       icon: Mail,
-      href: "mailto:hello@example.com",
+      href: "mailto:moesam1456@gmail.com",
       name: "Email",
       color: resolvedTheme === 'dark' ? "hover:bg-red-700" : "hover:bg-red-500 hover:text-white"
     }
   ]
 
   const quickLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Skills", href: "#skills" },
-    { name: "Contact", href: "#contact" }
+    { name: t('Navigation.home'), href: "#home" },
+    { name: t('Navigation.about'), href: "#about" },
+    { name: t('Navigation.projects'), href: "#projects" },
+    { name: t('Navigation.skills'), href: "#skills" },
+    { name: t('Navigation.contact'), href: "#contact" }
   ]
 
   const technologies = ['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind', 'MongoDB']
@@ -121,8 +117,9 @@ export default function Footer() {
     <footer
       ref={footerRef}
       className="relative overflow-hidden bg-gradient-to-br from-background via-purple-50/5 to-blue-50/5 dark:from-background dark:via-purple-950/5 dark:to-blue-950/5 border-t border-border/50 transition-colors duration-300"
+      dir={locale === 'ar' ? 'rtl' : 'ltr'}
     >
-      {/* خلفية متحركة */}
+      {/* Background animation */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-br from-blue-500/3 via-purple-500/3 to-pink-500/3"
         style={{
@@ -131,7 +128,7 @@ export default function Footer() {
         }}
       />
 
-      {/* أشكال عائمة */}
+      {/* Floating shapes */}
       <motion.div
         className="absolute bottom-10 left-10 w-64 h-64 rounded-full blur-3xl"
         style={{
@@ -186,12 +183,12 @@ export default function Footer() {
                   <Code2 className="w-5 h-5 text-white" />
                 </motion.div>
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-                  Portfolio
+                  {t('footer.brand', 'Portfolio')}
                 </h3>
               </motion.div>
 
               <p className="text-muted-foreground leading-relaxed">
-                Crafting digital experiences with modern technologies and innovative solutions.
+                {t('footer.description')}
               </p>
 
               <motion.div
@@ -199,7 +196,7 @@ export default function Footer() {
                 whileHover={{ x: 5 }}
               >
                 <Coffee className="w-4 h-4" />
-                <span>Fueled by coffee and passion</span>
+                <span>{t('footer.fueledBy', 'Fueled by coffee and passion')}</span>
               </motion.div>
             </motion.div>
 
@@ -211,14 +208,16 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="space-y-4"
             >
-              <h4 className="font-semibold text-lg text-foreground">Quick Links</h4>
+              <h4 className="font-semibold text-lg text-foreground">
+                {t('footer.quickLinks', 'Quick Links')}
+              </h4>
               <div className="space-y-3">
                 {quickLinks.map((link, index) => (
                   <motion.button
                     key={link.name}
                     onClick={() => scrollToSection(link.href.replace('#', ''))}
                     className="block text-muted-foreground hover:text-foreground transition-colors duration-300 cursor-pointer group text-left w-full"
-                    whileHover={{ x: 5 }}
+                    whileHover={{ x: locale === 'ar' ? -5 : 5 }}
                     transition={{ delay: index * 0.1 }}
                   >
                     <span className="flex items-center gap-2">
@@ -242,7 +241,9 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="space-y-4"
             >
-              <h4 className="font-semibold text-lg text-foreground">Technologies</h4>
+              <h4 className="font-semibold text-lg text-foreground">
+                {t('footer.technologies', 'Technologies')}
+              </h4>
               <div className="flex flex-wrap gap-2">
                 {technologies.map((tech, index) => (
                   <motion.span
@@ -267,9 +268,11 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="space-y-4"
             >
-              <h4 className="font-semibold text-lg text-foreground">Let's Connect</h4>
+              <h4 className="font-semibold text-lg text-foreground">
+                {t('footer.connect', "Let's Connect")}
+              </h4>
               <p className="text-muted-foreground text-sm">
-                Interested in collaborating? Feel free to reach out for projects, opportunities, or just to say hello!
+                {t('footer.connectDescription')}
               </p>
 
               <motion.div
@@ -321,9 +324,9 @@ export default function Footer() {
             >
               <Sparkles className="w-5 h-5 text-primary" />
               <span className="text-sm text-muted-foreground">
-                Ready to start your next project?
-                <span className="text-primary font-semibold ml-1 hover:underline">
-                  Let's talk →
+                {t('footer.readyToStart', 'Ready to start your next project?')}
+                <span className={`text-primary font-semibold ${locale === 'ar' ? 'mr-1' : 'ml-1'} hover:underline`}>
+                  {t('footer.letsTalk', "Let's talk →")}
                 </span>
               </span>
             </motion.div>
@@ -338,13 +341,13 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="border-t border-border/50 py-8"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className={`flex flex-col md:flex-row justify-between items-center gap-4 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
             {/* Copyright */}
             <motion.div
               className="flex items-center gap-2 text-muted-foreground text-sm"
               whileHover={{ scale: 1.02 }}
             >
-              <span>&copy; {currentYear} Portfolio. All rights reserved.</span>
+              <span>&copy; {currentYear} {t('footer.brand', 'Portfolio')}. {t('footer.copyright', 'All rights reserved.')}</span>
               <motion.span
                 className="flex items-center gap-1 text-red-500"
                 animate={{ scale: [1, 1.2, 1] }}
@@ -359,14 +362,14 @@ export default function Footer() {
               className="flex items-center gap-2 text-muted-foreground text-sm"
               whileHover={{ scale: 1.02 }}
             >
-              <span>Made with</span>
+              <span>{t('footer.madeWith', 'Made with')}</span>
               <motion.span
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
                 💙
               </motion.span>
-              <span>by Your Name</span>
+              <span>{t('footer.by', 'by Mohamed Essam')}</span>
             </motion.div>
 
             {/* Back to Top */}
@@ -380,7 +383,7 @@ export default function Footer() {
                 onClick={scrollToTop}
                 className="rounded-xl gap-2 group border-2"
               >
-                <span className="text-sm">Back to Top</span>
+                <span className="text-sm">{t('footer.backToTop', 'Back to Top')}</span>
                 <motion.div
                   animate={{ y: [0, -2, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}

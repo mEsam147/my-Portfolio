@@ -5,6 +5,5 @@ export const siteConfig = {
   links: {
     github: "https://github.com/yourusername",
     linkedin: "https://linkedin.com/in/yourusername",
-    twitter: "https://twitter.com/yourusername",
   },
 }

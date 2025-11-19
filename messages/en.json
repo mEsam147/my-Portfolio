@@ -1,4 +1,3 @@
-
 {
   "Navigation": {
     "home": "Home",
@@ -7,34 +6,82 @@
     "skills": "Skills",
     "contact": "Contact"
   },
-  "Hero": {
-    "title": "AR Developer",
-    "subtitle": "& 3D Artist",
-    "description": "Creating immersive digital experiences that blend the physical and virtual worlds through cutting-edge augmented reality and 3D technologies.",
-    "viewProjects": "View AR Projects",
-    "getInTouch": "Get In Touch"
+  "hero": {
+    "titles": ["Mohamed Essam", "Frontend Developer", "FullStack Developer", "Problem Solver"],
+    "subtitle": "I craft engaging web experiences using React, Next.js, and MERN stack solutions. I have 1 year of professional experience building scalable web apps in a company environment.",
+    "badge": "Frontend & FullStack Developer",
+    "stats": [
+      { "number": "1+", "label": "Year Experience" },
+      { "number": "1", "label": "Company Worked" },
+      { "number": "20+", "label": "Projects Completed" }
+    ],
+    "cta": [
+      { "text": "See Projects", "target": "projects" },
+      { "text": "Get In Touch", "target": "contact" }
+    ]
   },
-  "About": {
+  "about": {
     "title": "About Me",
-    "description": "Passionate AR developer with 6+ years of experience creating immersive digital experiences",
-    "skills": "Skills & Technologies",
-    "experience": "Experience & Education"
+    "badge": "About Me",
+    "subtitle": "Crafting digital experiences that blend innovation with functionality to create exceptional web solutions",
+    "description": "I'm a passionate developer specializing in building modern, scalable web applications. With a strong background in both frontend and backend development, I love transforming complex ideas into intuitive and seamless user interfaces. I believe in the power of continuous learning and always enjoy the challenge of mastering new technologies and frameworks.",
+    "stats": {
+      "projects": "Projects Completed",
+      "experience": "Years Experience",
+      "satisfaction": "Client Satisfaction",
+      "support": "Fast Support"
+    },
+    "skills": {
+      "frontend": "Frontend Development",
+      "backend": "Backend Development",
+      "devops": "DevOps & Tools"
+    },
+    "cta": "Let's Create Something Amazing"
   },
-  "Projects": {
-    "title": "AR Projects",
-    "description": "Immersive experiences that push the boundaries of digital interaction",
-    "featured": "Featured",
+  "skills": {
+    "title": "Skills & Technologies",
+    "badge": "Technical Expertise",
+    "subtitle": "Mastering modern technologies to build scalable and performant applications",
+    "mern": "MERN Stack Specialist",
+    "core": "Core Competencies",
+    "techStack": "Technology Stack",
+    "cta": "Start a Project",
+    "items": [
+      { "name": "React / Next.js", "level": 95 },
+      { "name": "TypeScript", "level": 90 },
+      { "name": "Node.js", "level": 85 },
+      { "name": "MongoDB", "level": 82 }
+    ],
+    "categories": {
+      "frontend": "Frontend & 3D",
+      "backend": "Backend Development",
+      "devops": "DevOps & Cloud"
+    }
+  },
+  "projects": {
+    "title": "My Projects",
+    "badge": "Featured Work",
+    "subtitle": "A collection of my recent projects that showcase my skills in modern web development",
+    "cta": "View All Projects",
+    "description": "Interested in working together? Let's discuss your next project",
     "technologies": "Technologies Used",
     "liveDemo": "Live Demo",
     "sourceCode": "Source Code"
   },
-  "Contact": {
+  "contact": {
     "title": "Get In Touch",
-    "description": "Ready to bring your AR vision to life? Let's create something amazing together.",
+    "description": "Ready to bring your ideas to life? Let's discuss your project and create something amazing together.",
     "letsConnect": "Let's Connect",
+    "getInTouch": "Get in touch",
+    "descriptionText": "I'm always excited to hear about new projects and opportunities. Whether you have a specific idea in mind or just want to explore possibilities, I'd love to connect and discuss how we can work together.",
+    "quickResponse": "Quick Response",
+    "responseText": "I typically respond within 24 hours. For urgent matters, feel free to call or use the contact form.",
     "email": "Email",
     "phone": "Phone",
+    "whatsapp": "WhatsApp",
     "location": "Location",
+    "sendEmail": "Send me an email anytime",
+    "availableRemote": "Available for remote work",
     "ready": "Ready to Start Your Project?",
     "readyDescription": "I'm currently available for freelance work and full-time opportunities. Let's create immersive experiences that captivate and inspire.",
     "name": "Name",
@@ -48,11 +95,28 @@
     "emailInvalid": "Invalid email address",
     "nameLength": "Name must be at least 2 characters",
     "subjectLength": "Subject must be at least 5 characters",
-    "messageLength": "Message must be at least 10 characters"
+    "messageLength": "Message must be at least 10 characters",
+    "preferDirect": "Prefer a more direct approach?",
+    "sendDirectEmail": "Send Direct Email",
+    "callNow": "Call Now",
+    "messageSent": "Message Sent!",
+    "thankYou": "Thank you for reaching out. I'll get back to you as soon as possible.",
+    "sendAnother": "Send Another Message"
   },
-  "Footer": {
+  "footer": {
+    "brand": "Portfolio",
+    "description": "Crafting digital experiences with modern technologies and innovative solutions.",
+    "fueledBy": "Fueled by coffee and passion",
+    "quickLinks": "Quick Links",
+    "technologies": "Technologies",
+    "connect": "Let's Connect",
+    "connectDescription": "Interested in collaborating? Feel free to reach out for projects, opportunities, or just to say hello!",
+    "readyToStart": "Ready to start your next project?",
+    "letsTalk": "Let's talk →",
+    "copyright": "All rights reserved.",
     "madeWith": "Made with",
-    "builtWith": "Built with Next.js, TypeScript, TailwindCSS, and Framer Motion"
+    "by": "by Mohamed Essam",
+    "backToTop": "Back to Top"
   },
   "Theme": {
     "light": "Light",

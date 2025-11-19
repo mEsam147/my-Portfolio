@@ -7,31 +7,33 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
+import { Alert, AlertDescription } from '@/components/ui/alert'
 import { useLocale } from '@/i18n/useLocale'
 import emailjs from '@emailjs/browser'
 
 export default function Contact() {
-  const { t } = useLocale()
+  const { t, locale } = useLocale()
   const contactRef = useRef<HTMLElement>(null)
   const formRef = useRef<HTMLFormElement>(null)
 
   const [isLoading, setIsLoading] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   })
 
-  // Email.js configuration - Replace with your actual credentials
+  // Email.js configuration from environment variables
   const EMAILJS_CONFIG = {
-    SERVICE_ID: 'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-    TEMPLATE_ID: 'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-    PUBLIC_KEY: 'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+    SERVICE_ID: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+    TEMPLATE_ID: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+    PUBLIC_KEY: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || process.env.NEXT_PUBLIC_EMAILJS_USER_ID || ''
   }
 
-  // تأثيرات الماوس للخلفية
+  // Mouse effects for background
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
   const cursorX = useSpring(mouseX, { stiffness: 150, damping: 30 })
@@ -65,17 +67,32 @@ export default function Contact() {
 
   // Initialize EmailJS
   useEffect(() => {
-    emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY)
+    if (EMAILJS_CONFIG.PUBLIC_KEY) {
+      emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY)
+    }
   }, [])
+
+  // Auto-hide alerts after 5 seconds
+  useEffect(() => {
+    if (error || success) {
+      const timer = setTimeout(() => {
+        setError(null)
+        setSuccess(null)
+      }, 5000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [error, success])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     setError(null)
+    setSuccess(null)
 
     // Basic validation
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-      setError('Please fill in all fields')
+      setError(t('contact.required', 'Please fill in all fields'))
       setIsLoading(false)
       return
     }
@@ -83,40 +100,47 @@ export default function Contact() {
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(formData.email)) {
-      setError('Please enter a valid email address')
+      setError(t('contact.emailInvalid', 'Please enter a valid email address'))
+      setIsLoading(false)
+      return
+    }
+
+    // Check if EmailJS is configured
+    if (!EMAILJS_CONFIG.SERVICE_ID || !EMAILJS_CONFIG.TEMPLATE_ID || !EMAILJS_CONFIG.PUBLIC_KEY) {
+      setError(t('contact.error', 'Email service is not configured properly. Please contact me directly at moesam1456@gmail.com'))
       setIsLoading(false)
       return
     }
 
     try {
+      // Prepare template parameters
+      const templateParams = {
+        from_name: formData.name,
+        message: locale === 'ar'
+          ? `من: ${formData.name} <${formData.email}>\n\nالرسالة:\n${formData.message}`
+          : `From: ${formData.name} <${formData.email}>\n\nMessage:\n${formData.message}`,
+        to_name: 'Moesam',
+        reply_to: formData.email,
+      }
+
       // Send email using EmailJS
       const result = await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
         EMAILJS_CONFIG.TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_name: 'Your Name', // Replace with your name
-          reply_to: formData.email,
-        },
+        templateParams,
         EMAILJS_CONFIG.PUBLIC_KEY
       )
 
       if (result.status === 200) {
-        setIsSubmitted(true)
+        setSuccess(t('contact.success', 'Your message has been sent successfully! I will get back to you soon.'))
         setFormData({ name: '', email: '', message: '' })
-
-        // Reset submission status after 5 seconds
-        setTimeout(() => {
-          setIsSubmitted(false)
-        }, 5000)
+        setIsSubmitted(true)
       } else {
         throw new Error('Failed to send message')
       }
     } catch (err) {
       console.error('EmailJS Error:', err)
-      setError('Failed to send message. Please try again or contact me directly.')
+      setError(t('contact.error', 'Failed to send message. Please try again or contact me directly at moesam1456@gmail.com.'))
     } finally {
       setIsLoading(false)
     }
@@ -127,32 +151,38 @@ export default function Contact() {
       ...prev,
       [e.target.name]: e.target.value
     }))
-    // Clear error when user starts typing
+    // Clear errors when user starts typing
     if (error) setError(null)
   }
 
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email",
-      value: "hello@example.com",
-      description: "Send me an email anytime",
+      title: t('contact.email', 'Email'),
+      value: "moesam1456@gmail.com",
+      description: t('contact.sendEmail', 'Send me an email anytime'),
       color: "from-blue-500 to-cyan-500",
-      action: () => window.open('mailto:hello@example.com')
+      action: () => window.open('mailto:moesam1456@gmail.com')
     },
     {
       icon: Phone,
-      title: "Phone",
-      value: "+1 (555) 123-4567",
-      description: "Mon to Fri 9am to 6pm",
+      title: t('contact.phone', 'Phone'),
+      value: "+20 1220527301",
       color: "from-purple-500 to-pink-500",
-      action: () => window.open('tel:+15551234567')
+      action: () => window.open('tel:+201220527301')
+    },
+    {
+      icon: Phone,
+      title: t('contact.whatsapp', 'WhatsApp'),
+      value: "+20 1220527301",
+      color: "from-green-500 to-emerald-500",
+      action: () => window.open('https://wa.me/201220527301', '_blank')
     },
     {
       icon: MapPin,
-      title: "Location",
-      value: "New York, NY",
-      description: "Available for remote work",
+      title: t('contact.location', 'Location'),
+      value: locale === 'ar' ? "مصر" : "Egypt",
+      description: t('contact.availableRemote', 'Available for remote work'),
       color: "from-green-500 to-emerald-500",
       action: null
     }
@@ -182,8 +212,12 @@ export default function Contact() {
   }
 
   return (
-    <section ref={contactRef} id="contact" className="py-28 relative overflow-hidden bg-gradient-to-br from-background via-blue-50/5 to-purple-50/5 dark:from-background dark:via-blue-950/5 dark:to-purple-950/5">
-      {/* خلفية متحركة */}
+    <section
+      ref={contactRef}
+      id="contact"
+      className="py-28 relative overflow-hidden bg-gradient-to-br from-background via-blue-50/5 to-purple-50/5 dark:from-background dark:via-blue-950/5 dark:to-purple-950/5"
+      dir={locale === 'ar' ? 'rtl' : 'ltr'}
+    >
       <motion.div
         className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5"
         style={{
@@ -204,7 +238,6 @@ export default function Contact() {
         }}
       />
 
-      {/* أشكال عائمة */}
       <motion.div
         className="absolute top-20 left-10 w-72 h-72 bg-cyan-400/10 rounded-full blur-3xl"
         animate={{
@@ -251,7 +284,7 @@ export default function Contact() {
               <MessageCircle className="w-5 h-5 text-primary" />
             </motion.div>
             <span className="text-lg font-semibold text-primary bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              Let's Connect
+              {t('contact.letsConnect', "Let's Connect")}
             </span>
           </motion.div>
 
@@ -274,7 +307,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light"
           >
-            Ready to bring your ideas to life? Let's discuss your project and create something amazing together.
+            {t('contact.description')}
           </motion.p>
         </motion.div>
 
@@ -289,12 +322,10 @@ export default function Contact() {
           >
             <motion.div variants={itemVariants}>
               <h3 className="text-3xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-                Get in touch
+                {t('contact.getInTouch', 'Get in touch')}
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                I'm always excited to hear about new projects and opportunities.
-                Whether you have a specific idea in mind or just want to explore possibilities,
-                I'd love to connect and discuss how we can work together.
+                {t('contact.descriptionText')}
               </p>
             </motion.div>
 
@@ -307,7 +338,7 @@ export default function Contact() {
                   className="bg-gradient-to-br from-card to-card/80 backdrop-blur-xl border border-border/50 rounded-2xl p-6 shadow-2xl shadow-black/5 hover:shadow-3xl hover:shadow-primary/5 transition-all duration-500 group cursor-pointer"
                   onClick={info.action || undefined}
                 >
-                  <div className="flex items-start gap-4">
+                  <div className={`flex items-start gap-4 ${locale === 'ar' ? 'flex-row-reverse' : ''}`}>
                     <motion.div
                       className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${info.color} flex items-center justify-center shadow-lg`}
                       whileHover={{ rotate: 360, scale: 1.1 }}
@@ -339,17 +370,19 @@ export default function Contact() {
             >
               <div className="flex items-center gap-3 mb-3">
                 <Rocket className="w-5 h-5 text-primary" />
-                <h4 className="font-semibold text-foreground">Quick Response</h4>
+                <h4 className="font-semibold text-foreground">
+                  {t('contact.quickResponse', 'Quick Response')}
+                </h4>
               </div>
               <p className="text-sm text-muted-foreground">
-                I typically respond within 24 hours. For urgent matters, feel free to call or use the contact form.
+                {t('contact.responseText')}
               </p>
             </motion.div>
           </motion.div>
 
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: locale === 'ar' ? -50 : 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
@@ -374,10 +407,10 @@ export default function Contact() {
                     <CheckCircle className="w-10 h-10 text-white" />
                   </motion.div>
                   <h3 className="text-2xl font-bold text-foreground mb-3">
-                    Message Sent!
+                    {t('contact.messageSent', 'Message Sent!')}
                   </h3>
                   <p className="text-muted-foreground mb-6">
-                    Thank you for reaching out. I'll get back to you as soon as possible.
+                    {t('contact.thankYou', 'Thank you for reaching out. I will get back to you as soon as possible.')}
                   </p>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -389,21 +422,22 @@ export default function Contact() {
                       variant="outline"
                       className="rounded-xl"
                     >
-                      Send Another Message
+                      {t('contact.sendAnother', 'Send Another Message')}
                     </Button>
                   </motion.div>
                 </motion.div>
               ) : (
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                  {/* Error Message */}
+                  {/* Inline Form Error Message (for immediate feedback) */}
                   {error && (
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="bg-destructive/10 border border-destructive/20 rounded-xl p-4 flex items-center gap-3"
                     >
-                      <AlertCircle className="w-5 h-5 text-destructive" />
-                      <p className="text-sm text-destructive">{error}</p>
+                      <Alert variant="destructive" className="rounded-xl">
+                        <AlertCircle className="w-4 h-4" />
+                        <AlertDescription>{error}</AlertDescription>
+                      </Alert>
                     </motion.div>
                   )}
 
@@ -421,8 +455,7 @@ export default function Contact() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      required
-                      placeholder="Enter your full name"
+                      placeholder={locale === 'ar' ? 'أدخل اسمك الكامل' : 'Enter your full name'}
                       className="rounded-xl border-2 bg-background/50 backdrop-blur-sm focus:border-primary transition-all duration-300 h-12"
                       disabled={isLoading}
                     />
@@ -443,8 +476,7 @@ export default function Contact() {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      required
-                      placeholder="your.email@example.com"
+                      placeholder={locale === 'ar' ? 'بريدك@example.com' : 'your.email@example.com'}
                       className="rounded-xl border-2 bg-background/50 backdrop-blur-sm focus:border-primary transition-all duration-300 h-12"
                       disabled={isLoading}
                     />
@@ -464,8 +496,7 @@ export default function Contact() {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      required
-                      placeholder="Tell me about your project, ideas, or any questions you have..."
+                      placeholder={locale === 'ar' ? 'أخبرني عن مشروعك، أفكارك، أو أي أسئلة لديك...' : 'Tell me about your project, ideas, or any questions you have...'}
                       rows={6}
                       className="rounded-xl border-2 bg-background/50 backdrop-blur-sm focus:border-primary transition-all duration-300 resize-none"
                       disabled={isLoading}
@@ -506,7 +537,7 @@ export default function Contact() {
                           />
                           <span className="relative z-10 flex items-center gap-3">
                             <Send className="w-5 h-5" />
-                            {t('contact.send')}
+                            {t('contact.sendMessage')}
                             <motion.span
                               animate={{ x: [0, 5, 0] }}
                               transition={{ duration: 1.5, repeat: Infinity }}
@@ -539,7 +570,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="text-muted-foreground text-lg mb-6"
           >
-            Prefer a more direct approach?
+            {t('contact.preferDirect', 'Prefer a more direct approach?')}
           </motion.p>
           <motion.div
             whileHover={{ scale: 1.02 }}
@@ -550,18 +581,18 @@ export default function Contact() {
               variant="outline"
               size="lg"
               className="rounded-2xl px-8 py-6 border-2 backdrop-blur-sm"
-              onClick={() => window.open('mailto:hello@example.com')}
+              onClick={() => window.open('mailto:moesam1456@gmail.com')}
             >
-              <Mail className="w-5 h-5 mr-2" />
-              Send Direct Email
+              <Mail className={`w-5 h-5 ${locale === 'ar' ? 'ml-2' : 'mr-2'}`} />
+              {t('contact.sendDirectEmail', 'Send Direct Email')}
             </Button>
             <Button
               size="lg"
               className="rounded-2xl px-8 py-6 bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-2xl shadow-green-500/25 hover:shadow-3xl hover:shadow-emerald-500/30 border-0"
-              onClick={() => window.open('tel:+15551234567')}
+              onClick={() => window.open('tel:+201220527301')}
             >
-              <Phone className="w-5 h-5 mr-2" />
-              Call Now
+              <Phone className={`w-5 h-5 ${locale === 'ar' ? 'ml-2' : 'mr-2'}`} />
+              {t('contact.callNow', 'Call Now')}
             </Button>
           </motion.div>
         </motion.div>

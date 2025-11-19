@@ -11,7 +11,7 @@ export default function About() {
   const aboutRef = useRef<HTMLElement>(null)
   const [isHovered, setIsHovered] = useState(false)
 
-  // تأثيرات الماوس للخلفية
+  // Mouse effects for background
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
   const cursorX = useSpring(mouseX, { stiffness: 150, damping: 30 })
@@ -45,40 +45,33 @@ export default function About() {
 
   const skills = [
     {
-      category: "Frontend Development",
+      category: t('about.skills.frontend'),
       icon: Palette,
       items: ["React", "Next.js", "Angular", "TypeScript", "Tailwind CSS"],
       color: "from-blue-500 to-cyan-500",
       progress: 90
     },
     {
-      category: "Backend Development",
+      category: t('about.skills.backend'),
       icon: Database,
       items: ["Node.js", "Express", "Prisma", "Supabase", "REST APIs"],
       color: "from-purple-500 to-pink-500",
       progress: 85
     },
     {
-      category: "DevOps & Tools",
+      category: t('about.skills.devops'),
       icon: Code,
       items: ["Git", "AWS", "Figma", "VS Code", "Postman"],
       color: "from-green-500 to-emerald-500",
       progress: 80
     },
-    // {
-    //   category: "Mobile Development",
-    //   icon: Rocket,
-    //   items: ["React Native", "Flutter", "iOS", "Android", "Expo"],
-    //   color: "from-orange-500 to-red-500",
-    //   progress: 75
-    // }
   ]
 
   const stats = [
-    { number: "50+", label: "Projects Completed", icon: Award, color: "from-yellow-500 to-orange-500" },
-    { number: "3+", label: "Years Experience", icon: Clock, color: "from-blue-500 to-purple-500" },
-    { number: "100%", label: "Client Satisfaction", icon: Heart, color: "from-pink-500 to-rose-500" },
-    { number: "24/7", label: "Fast Support", icon: Zap, color: "from-green-500 to-teal-500" }
+    { number: "50+", label: t('about.stats.projects'), icon: Award, color: "from-yellow-500 to-orange-500" },
+    { number: "3+", label: t('about.stats.experience'), icon: Clock, color: "from-blue-500 to-purple-500" },
+    { number: "100%", label: t('about.stats.satisfaction'), icon: Heart, color: "from-pink-500 to-rose-500" },
+    { number: "24/7", label: t('about.stats.support'), icon: Zap, color: "from-green-500 to-teal-500" }
   ]
 
   const containerVariants = {
@@ -106,7 +99,7 @@ export default function About() {
 
   return (
     <section ref={aboutRef} id="about" className="py-28 relative overflow-hidden bg-gradient-to-br from-background via-blue-50/5 to-purple-50/5 dark:from-background dark:via-blue-950/5 dark:to-purple-950/5">
-      {/* خلفية متحركة متقدمة */}
+      {/* Animated background */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10"
         style={{
@@ -127,7 +120,7 @@ export default function About() {
         }}
       />
 
-      {/* شبكة متحركة */}
+      {/* Moving grid */}
       <motion.div
         className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:60px_60px]"
         style={{
@@ -136,7 +129,7 @@ export default function About() {
         }}
       />
 
-      {/* أشكال عائمة متقدمة */}
+      {/* Advanced floating shapes */}
       <motion.div
         className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-full blur-3xl"
         style={{
@@ -208,7 +201,7 @@ export default function About() {
                 <Sparkles className="w-5 h-5 text-primary" />
               </motion.div>
               <span className="text-lg font-semibold text-primary bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                About Me
+                {t('about.badge')}
               </span>
             </motion.div>
           </motion.div>
@@ -223,8 +216,7 @@ export default function About() {
 
           <motion.div variants={itemVariants}>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
-              Crafting digital experiences that blend <span className="font-semibold text-primary">innovation</span> with{' '}
-              <span className="font-semibold text-purple-500">functionality</span> to create exceptional web solutions
+              {t('about.subtitle')}
             </p>
           </motion.div>
         </motion.div>
@@ -264,7 +256,7 @@ export default function About() {
                 </motion.h3>
                 <p className="text-sm text-muted-foreground font-medium">{stat.label}</p>
 
-                {/* تأثير التوهج */}
+                {/* Glow effect */}
                 <motion.div
                   className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   initial={false}
@@ -275,7 +267,7 @@ export default function About() {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-20 items-center">
-          {/* Profile Image Section - Simplified */}
+          {/* Profile Image Section */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -351,7 +343,7 @@ export default function About() {
             </motion.div>
           </motion.div>
 
-          {/* المحتوى */}
+          {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: 80 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -370,7 +362,7 @@ export default function About() {
               </p>
             </motion.div>
 
-            {/* المهارات المتقدمة */}
+            {/* Advanced Skills */}
             <div className="space-y-6">
               {skills.map((skill, index) => (
                 <motion.div
@@ -428,7 +420,7 @@ export default function About() {
               ))}
             </div>
 
-            {/* زر CTA */}
+            {/* CTA Button */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -449,7 +441,7 @@ export default function About() {
                   transition={{ duration: 0.8 }}
                 />
                 <span className="relative z-10 flex items-center gap-3">
-                  Let's Create Something Amazing
+                  {t('about.cta')}
                   <motion.div
                     animate={{ x: [0, 5, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}

@@ -1,14 +1,9 @@
-export type Locale = 'en' | 'ar'
+// i18n/config.ts
+export const locales = ['en', 'ar'] as const;
+export const defaultLocale = 'en' as const;
+export type Locale = (typeof locales)[number];
 
-export const defaultLocale: Locale = 'en'
-export const locales: Locale[] = ['en', 'ar']
-
-export const localeNames = {
+export const localeNames: Record<Locale, string> = {
   en: 'English',
   ar: 'العربية'
-}
-
-export const direction = {
-  en: 'ltr',
-  ar: 'rtl'
-}
+};

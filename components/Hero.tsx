@@ -6,37 +6,39 @@ import { useLocale } from '@/i18n/useLocale'
 import { useRef, useEffect, useState } from 'react'
 import { ArrowDown, Sparkles, Code, Palette, Server } from 'lucide-react'
 import { useTheme } from 'next-themes'
+import en from '@/messages/en.json'
+import ar from '@/messages/ar.json'
 
 // Data structure for hero section
-export const heroData = {
-  titles: [
-    "Mohamed Essam",
-    "Frontend Developer",
-    "FullStack Developer",
-    "Problem Solver"
-  ],
-  subtitle: "I craft engaging web experiences using React, Next.js, and MERN stack solutions. I have 1 year of professional experience building scalable web apps in a company environment.",
-  badge: {
-    text: "Frontend & FullStack Developer",
-    icon: "Sparkles"
-  },
-  stats: [
-    { number: "1+", label: "Year Experience" },
-    { number: "1", label: "Company Worked" },
-    { number: "20+", label: "Projects Completed" }
-  ],
-  cta: [
-    {
-      text: "See Projects",
-      target: "projects",
-      icon: "ArrowDown"
-    },
-    {
-      text: "Get In Touch",
-      target: "contact"
-    }
-  ]
-}
+// export const heroData = {
+//   titles: [
+//     "Mohamed Essam",
+//     "Frontend Developer",
+//     "FullStack Developer",
+//     "Problem Solver"
+//   ],
+//   subtitle: "I craft engaging web experiences using React, Next.js, and MERN stack solutions. I have 1 year of professional experience building scalable web apps in a company environment.",
+//   badge: {
+//     text: "Frontend & FullStack Developer",
+//     icon: "Sparkles"
+//   },
+//   stats: [
+//     { number: "1+", label: "Year Experience" },
+//     { number: "1", label: "Company Worked" },
+//     { number: "20+", label: "Projects Completed" }
+//   ],
+//   cta: [
+//     {
+//       text: "See Projects",
+//       target: "projects",
+//       icon: "ArrowDown"
+//     },
+//     {
+//       text: "Get In Touch",
+//       target: "contact"
+//     }
+//   ]
+// }
 
 // Predefined positions for stars to avoid Math.random() during SSR
 const STAR_POSITIONS = Array.from({ length: 20 }, (_, i) => ({
@@ -48,7 +50,8 @@ const STAR_POSITIONS = Array.from({ length: 20 }, (_, i) => ({
 }))
 
 export default function Hero() {
-  const { t } = useLocale()
+    const { locale } = useLocale() // "en" أو "ar"
+  const heroData = locale === 'ar' ? ar.hero : en.hero
   const { theme, resolvedTheme } = useTheme()
   const heroRef = useRef<HTMLElement>(null)
   const [isHovering, setIsHovering] = useState(false)
