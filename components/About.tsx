@@ -69,7 +69,7 @@ export default function About() {
 
   const stats = [
     { number: "50+", label: t('about.stats.projects'), icon: Award, color: "from-yellow-500 to-orange-500" },
-    { number: "3+", label: t('about.stats.experience'), icon: Clock, color: "from-blue-500 to-purple-500" },
+    { number: "1+", label: t('about.stats.experience'), icon: Clock, color: "from-blue-500 to-purple-500" },
     { number: "100%", label: t('about.stats.satisfaction'), icon: Heart, color: "from-pink-500 to-rose-500" },
     { number: "24/7", label: t('about.stats.support'), icon: Zap, color: "from-green-500 to-teal-500" }
   ]

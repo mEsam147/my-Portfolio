@@ -9,36 +9,7 @@ import { useTheme } from 'next-themes'
 import en from '@/messages/en.json'
 import ar from '@/messages/ar.json'
 
-// Data structure for hero section
-// export const heroData = {
-//   titles: [
-//     "Mohamed Essam",
-//     "Frontend Developer",
-//     "FullStack Developer",
-//     "Problem Solver"
-//   ],
-//   subtitle: "I craft engaging web experiences using React, Next.js, and MERN stack solutions. I have 1 year of professional experience building scalable web apps in a company environment.",
-//   badge: {
-//     text: "Frontend & FullStack Developer",
-//     icon: "Sparkles"
-//   },
-//   stats: [
-//     { number: "1+", label: "Year Experience" },
-//     { number: "1", label: "Company Worked" },
-//     { number: "20+", label: "Projects Completed" }
-//   ],
-//   cta: [
-//     {
-//       text: "See Projects",
-//       target: "projects",
-//       icon: "ArrowDown"
-//     },
-//     {
-//       text: "Get In Touch",
-//       target: "contact"
-//     }
-//   ]
-// }
+
 
 // Predefined positions for stars to avoid Math.random() during SSR
 const STAR_POSITIONS = Array.from({ length: 20 }, (_, i) => ({
@@ -375,7 +346,6 @@ export default function Hero() {
         />
       ))}
 
-      {/* تأثير التوهج حول المؤشر */}
       {mounted && (
         <motion.div
           className="fixed pointer-events-none z-50 rounded-full"
@@ -397,7 +367,6 @@ export default function Hero() {
         />
       )}
 
-      {/* شبكة متحركة خفيفة */}
       <motion.div
         className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:80px_80px] opacity-20"
         style={{
@@ -695,7 +664,7 @@ export default function Hero() {
       </div>
 
       {/* مؤشر التمرير المتقدم */}
-      <motion.div
+      {/* <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -732,7 +701,7 @@ export default function Hero() {
             Scroll Down
           </motion.p>
         </motion.div>
-      </motion.div>
+      </motion.div> */}
     </section>
   )
 }
