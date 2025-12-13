@@ -183,7 +183,7 @@ export const projects = [
     title: 'Slack Clone',
     description:
       'A real-time team communication platform with instant messaging, live video calls, multiple channels, and user authentication. Built for seamless collaboration and responsive design.',
-    image: '/projects/slack-clone.png',
+    image: '/slack.png',
     link: 'https://slack-clone-9iyk.vercel.app/auth',
     github: 'https://github.com/mEsam147/slack-clone',
     tags: [
