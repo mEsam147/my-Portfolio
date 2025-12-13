@@ -175,7 +175,7 @@ export const projects = [
       'A real-time chat application built with the MERN stack and Socket.IO. Supports instant messaging, live updates, multiple chat rooms, and responsive design. Includes user authentication, dynamic conversations, and smooth real-time interactions for an authentic chat experience.',
     image: '/threads.png',
     link: 'https://new-threads-clone-production.up.railway.app',
-    github: 'https://github.com/username/threads-clone', // ضع رابط GitHub
+    github: 'https://github.com/mEsam147/new-threads-clone', // ضع رابط GitHub
     tags: ['MongoDB', 'Express', 'React', 'Node.js', 'Socket.IO', 'Tailwind', 'Realtime', 'Auth'],
     hasGithub: true,
   },
@@ -184,8 +184,8 @@ export const projects = [
     description:
       'A real-time team communication platform with instant messaging, live video calls, multiple channels, and user authentication. Built for seamless collaboration and responsive design.',
     image: '/projects/slack-clone.png',
-    link: 'https://slackclone.example.com',
-    github: 'https://github.com/username/slack-clone',
+    link: 'https://slack-clone-9iyk.vercel.app/auth',
+    github: 'https://github.com/mEsam147/slack-clone',
     tags: [
       'MongoDB',
       'Express',
@@ -230,7 +230,7 @@ export const projects = [
       'Full-stack e-commerce platform built with Next.js and MERN stack. Features include product catalog, shopping cart, wishlist, secure checkout, user authentication, and an admin dashboard for managing products, orders, and users. Designed with modern UI and seamless multi-device experience.',
     image: '/nextmart.png',
     link: 'https://new-ecommerce-5j95.vercel.app',
-    github: 'https://github.com/username/nextmart',
+    github: 'https://github.com/mEsam147/new-Ecommerce',
     tags: [
       'Next.js',
       'React',
@@ -252,7 +252,7 @@ export const projects = [
       'Full-stack professional networking platform replicating LinkedIn. Includes user authentication, profile management, post creation, real-time feed updates, connections, messaging, and responsive design. Built with modern MERN stack architecture for a seamless user experience.',
     image: '/linkedin.png',
     link: 'https://new-linkedin-clone-production.up.railway.app',
-    github: 'https://github.com/username/linkedin-clone',
+    github: 'https://github.com/mEsam147/new-linkedin-clone',
     tags: [
       'React',
       'Node.js',
@@ -271,9 +271,9 @@ export const projects = [
     title: 'Airbnb Clone',
     description:
       'Full-stack Airbnb clone featuring real-time chat, booking management, user authentication, property listings, and email notifications. Built with Socket.IO for live messaging, Express and Node.js for the backend, MongoDB with Mongoose for data storage, and responsive design using Tailwind CSS.',
-    image: '/airbnb-clone.png',
-    link: 'https://your-airbnb-clone-link.com',
-    github: 'https://github.com/username/airbnb-clone',
+    image: '/airbnb.png',
+    link: 'https://airbnb-clone-o9d8.vercel.app/en',
+    github: 'https://github.com/mEsam147/airbnb-clone',
     tags: [
       'React',
       'Node.js',
@@ -729,6 +729,92 @@ export default function Projects() {
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10"
         >
           {projects.map((project, index) => (
+            // <motion.div
+            //   key={index}
+            //   variants={itemVariants}
+            //   whileHover={{
+            //     y: -12,
+            //     scale: 1.02,
+            //     transition: { type: 'spring', stiffness: 300, damping: 25 },
+            //   }}
+            //   onMouseEnter={() => setHoveredProject(index)}
+            //   onMouseLeave={() => setHoveredProject(null)}
+            //   className="relative group"
+            // >
+            //   <Card className="h-full relative overflow-hidden border-0 backdrop-blur-xl shadow-2xl hover:shadow-3xl transition-all duration-500 group">
+            //     {/* Project Image */}
+            //     <motion.div
+            //       className="relative h-56 overflow-hidden rounded-t-lg"
+            //       whileHover={{ scale: 1.05 }}
+            //       transition={{ duration: 0.5 }}
+            //     >
+            //       <Image
+            //         src={project.image}
+            //         alt={project.title}
+            //         fill
+            //         className="object-cover transition-transform duration-500 group-hover:scale-110"
+            //       />
+            //       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
+            //     </motion.div>
+
+            //     <CardHeader className="pb-4 relative z-10">
+            //       <CardTitle className="text-xl font-bold transition-colors duration-300 flex items-center gap-2">
+            //         {project.title}
+            //         <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            //       </CardTitle>
+            //       <CardDescription className="leading-relaxed text-sm text-muted-foreground">
+            //         {project.description}
+            //       </CardDescription>
+            //     </CardHeader>
+
+            //     <CardContent className="space-y-6 relative z-10">
+            //       {/* Tags */}
+            //       <div className="flex flex-wrap gap-2">
+            //         {project.tags.map((tag, tagIndex) => (
+            //           <span
+            //             key={tagIndex}
+            //             className="px-3 py-1.5 text-xs font-medium rounded-full text-white shadow-lg cursor-default"
+            //             style={{
+            //               background: `linear-gradient(to right, ${colors.accents.cyan}, ${colors.accents.purple})`,
+            //             }}
+            //           >
+            //             {tag}
+            //           </span>
+            //         ))}
+            //       </div>
+
+            //       {/* Buttons */}
+            //       <div className="flex gap-3">
+            //         {project.hasGithub && project.github && (
+            //           <Button
+            //             asChild
+            //             variant="outline"
+            //             size="sm"
+            //             className="w-full rounded-xl backdrop-blur-sm border-2 flex items-center justify-center gap-2"
+            //           >
+            //             <a href={project.github} target="_blank" rel="noopener noreferrer">
+            //               <Github className="h-4 w-4" /> {t('projects.sourceCode')}
+            //             </a>
+            //           </Button>
+            //         )}
+
+            //         <Button
+            //           asChild
+            //           size="sm"
+            //           className="w-full rounded-xl text-white shadow-lg border-0 flex items-center justify-center gap-2"
+            //           style={{
+            //             background: `linear-gradient(to right, ${colors.accents.blue}, ${colors.accents.purple})`,
+            //           }}
+            //         >
+            //           <a href={project.link} target="_blank">
+            //             <ExternalLink className="h-4 w-4" /> {t('projects.liveDemo')}
+            //           </a>
+            //         </Button>
+            //       </div>
+            //     </CardContent>
+            //   </Card>
+            // </motion.div>
+
             <motion.div
               key={index}
               variants={itemVariants}
@@ -741,8 +827,8 @@ export default function Projects() {
               onMouseLeave={() => setHoveredProject(null)}
               className="relative group"
             >
-              <Card className="h-full relative overflow-hidden border-0 backdrop-blur-xl shadow-2xl hover:shadow-3xl transition-all duration-500 group">
-                {/* Project Image */}
+              <Card className="flex flex-col h-full relative overflow-hidden border-0 backdrop-blur-xl shadow-2xl hover:shadow-3xl transition-all duration-500 group">
+                {/* صورة المشروع */}
                 <motion.div
                   className="relative h-56 overflow-hidden rounded-t-lg"
                   whileHover={{ scale: 1.05 }}
@@ -757,6 +843,7 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
                 </motion.div>
 
+                {/* محتوى البطاقة */}
                 <CardHeader className="pb-4 relative z-10">
                   <CardTitle className="text-xl font-bold transition-colors duration-300 flex items-center gap-2">
                     {project.title}
@@ -767,16 +854,14 @@ export default function Projects() {
                   </CardDescription>
                 </CardHeader>
 
-                <CardContent className="space-y-6 relative z-10">
+                <CardContent className="flex flex-col mt-auto space-y-6 relative z-10">
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
                         className="px-3 py-1.5 text-xs font-medium rounded-full text-white shadow-lg cursor-default"
-                        style={{
-                          background: `linear-gradient(to right, ${colors.accents.cyan}, ${colors.accents.purple})`,
-                        }}
+                        style={{ background: `linear-gradient(to right, #06b6d4, #a855f7)` }}
                       >
                         {tag}
                       </span>
@@ -784,7 +869,7 @@ export default function Projects() {
                   </div>
 
                   {/* Buttons */}
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 mt-auto">
                     {project.hasGithub && project.github && (
                       <Button
                         asChild
@@ -793,7 +878,7 @@ export default function Projects() {
                         className="w-full rounded-xl backdrop-blur-sm border-2 flex items-center justify-center gap-2"
                       >
                         <a href={project.github} target="_blank" rel="noopener noreferrer">
-                          <Github className="h-4 w-4" /> {t('projects.sourceCode')}
+                          <Github className="h-4 w-4" /> Source Code
                         </a>
                       </Button>
                     )}
@@ -802,12 +887,10 @@ export default function Projects() {
                       asChild
                       size="sm"
                       className="w-full rounded-xl text-white shadow-lg border-0 flex items-center justify-center gap-2"
-                      style={{
-                        background: `linear-gradient(to right, ${colors.accents.blue}, ${colors.accents.purple})`,
-                      }}
+                      style={{ background: `linear-gradient(to right, #3b82f6, #8b5cf6)` }}
                     >
-                      <a href={project.link} target="_blank">
-                        <ExternalLink className="h-4 w-4" /> {t('projects.liveDemo')}
+                      <a href={project.link} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-4 w-4" /> Live Demo
                       </a>
                     </Button>
                   </div>
