@@ -58,16 +58,91 @@
       "devops": "DevOps & Cloud"
     }
   },
-  "projects": {
+
+   "projects": {
     "title": "My Projects",
     "badge": "Featured Work",
     "subtitle": "A collection of my recent projects that showcase my skills in modern web development",
     "cta": "View All Projects",
     "description": "Interested in working together? Let's discuss your next project",
-    "technologies": "Technologies Used",
     "liveDemo": "Live Demo",
-    "sourceCode": "Source Code"
+    "sourceCode": "Source Code",
+    "projectsList": [
+      {
+        "title": "Eramo Store",
+        "description": "Advanced e-commerce web application with full-featured cart & wishlist. Supports guest checkout, user authentication, and smart merging of carts and wishlists across devices. Packed with modern UI and seamless performance for an outstanding shopping experience.",
+        "image": "/pro1.png",
+        "link": "https://eramostore.com/en",
+        "github": "",
+        "tags": ["Next.js", "React", "Node.js", "RestApi", "Tailwind", "Auth"],
+        "hasGithub": false
+      },
+      {
+        "title": "Eramo Portfolio",
+        "description": "Comprehensive online marketplace and SaaS platform with robust features like guest mode, authenticated sessions, wishlist & cart merging, and dynamic content management. Designed for high scalability and seamless multi-device user experience.",
+        "image": "/pro2.png",
+        "link": "https://www.e-ramo.net/en",
+        "github": "",
+        "tags": ["Next.js", "React", "RestApi", "Tailwind", "Node.js", "Auth"],
+        "hasGithub": false
+      },
+      {
+        "title": "Threads Clone",
+        "description": "A real-time chat application built with the MERN stack and Socket.IO. Supports instant messaging, live updates, multiple chat rooms, and responsive design. Includes user authentication, dynamic conversations, and smooth real-time interactions for an authentic chat experience.",
+        "image": "/threads.png",
+        "link": "https://new-threads-clone-production.up.railway.app",
+        "github": "https://github.com/mEsam147/new-threads-clone",
+        "tags": ["MongoDB", "Express", "React", "Node.js", "Socket.IO", "Tailwind", "Realtime", "Auth"],
+        "hasGithub": true
+      },
+      {
+        "title": "Slack Clone",
+        "description": "A real-time team communication platform with instant messaging, live video calls, multiple channels, and user authentication. Built for seamless collaboration and responsive design.",
+        "image": "/slack.png",
+        "link": "https://slack-clone-9iyk.vercel.app/auth",
+        "github": "https://github.com/mEsam147/slack-clone",
+        "tags": ["MongoDB", "Express", "React", "Node.js", "Stream Chat", "Stream Video", "Tailwind", "Realtime", "Auth"],
+        "hasGithub": true
+      },
+      {
+        "title": "Udemy Clone",
+        "description": "Full-stack online learning platform replicating Udemy. Features include course management, video streaming, payments, user authentication, and role-based dashboards for students, instructors, and admins with proper permissions. Designed for seamless interaction and responsive UI.",
+        "image": "/udemy.png",
+        "link": "https://udemy-clone-sigma.vercel.app",
+        "github": "https://github.com/username/udemy-clone",
+        "tags": ["Next.js", "React", "Node.js", "Express", "MongoDB", "Stripe", "Cloudinary", "Tailwind CSS", "JWT", "Passport.js", "Admin Dashboard", "Instructor Dashboard", "Student Dashboard", "Role-Based Access"],
+        "hasGithub": true
+      },
+      {
+        "title": "NextMart",
+        "description": "Full-stack e-commerce platform built with Next.js and MERN stack. Features include product catalog, shopping cart, wishlist, secure checkout, user authentication, and an admin dashboard for managing products, orders, and users. Designed with modern UI and seamless multi-device experience.",
+        "image": "/nextmart.png",
+        "link": "https://new-ecommerce-5j95.vercel.app",
+        "github": "https://github.com/mEsam147/new-Ecommerce",
+        "tags": ["Next.js", "React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "Stripe", "JWT", "Admin Dashboard", "Auth", "E-Commerce"],
+        "hasGithub": true
+      },
+      {
+        "title": "LinkedIn Clone",
+        "description": "Full-stack professional networking platform replicating LinkedIn. Includes user authentication, profile management, post creation, real-time feed updates, connections, messaging, and responsive design. Built with modern MERN stack architecture for a seamless user experience.",
+        "image": "/linkedin.png",
+        "link": "https://new-linkedin-clone-production.up.railway.app",
+        "github": "https://github.com/mEsam147/new-linkedin-clone",
+        "tags": ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "JWT", "Authentication", "Messaging", "Social Network", "Responsive UI"],
+        "hasGithub": true
+      },
+      {
+        "title": "Airbnb Clone",
+        "description": "Full-stack Airbnb clone featuring real-time chat, booking management, user authentication, property listings, and email notifications. Built with Socket.IO for live messaging, Express and Node.js for the backend, MongoDB with Mongoose for data storage, and responsive design using Tailwind CSS.",
+        "image": "/airbnb.png",
+        "link": "https://airbnb-clone-o9d8.vercel.app/en",
+        "github": "https://github.com/mEsam147/airbnb-clone",
+        "tags": ["React", "Node.js", "Express", "MongoDB", "Mongoose", "Socket.IO", "Email Services", "Tailwind CSS", "Authentication", "Booking System", "Real-time Chat", "Responsive UI"],
+        "hasGithub": true
+      }
+    ]
   },
+
   "contact": {
     "title": "Get In Touch",
     "description": "Ready to bring your ideas to life? Let's discuss your project and create something amazing together.",

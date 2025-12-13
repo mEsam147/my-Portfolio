@@ -58,15 +58,88 @@
       "devops": "DevOps والسحابة"
     }
   },
-  "projects": {
+   "projects": {
     "title": "مشاريعي",
     "badge": "أعمال مميزة",
     "subtitle": "مجموعة من مشاريعي الحديثة التي تعرض مهاراتي في تطوير الويب الحديث",
     "cta": "عرض جميع المشاريع",
     "description": "مهتم بالعمل معًا؟ دعنا نناقش مشروعك القادم",
-    "technologies": "التقنيات المستخدمة",
     "liveDemo": "عرض مباشر",
-    "sourceCode": "الكود المصدري"
+    "sourceCode": "الكود المصدري",
+    "projectsList": [
+      {
+        "title": "متجر إيرامو",
+        "description": "تطبيق ويب متقدم للتجارة الإلكترونية مع سلة تسوق وقائمة أمنيات كاملة الميزات. يدعم الدفع كضيف، مصادقة المستخدم، ودمج ذكي للسلال وقوائم الأمنيات عبر الأجهزة. مزود بواجهة مستخدم حديثة وأداء سلس لتجربة تسوق استثنائية.",
+        "image": "/pro1.png",
+        "link": "https://eramostore.com/en",
+        "github": "",
+        "tags": ["Next.js", "React", "Node.js", "RestApi", "Tailwind", "Auth"],
+        "hasGithub": false
+      },
+      {
+        "title": "بورتفوليو إيرامو",
+        "description": "منصة سوق إلكتروني وشاملة مع ميزات قوية مثل وضع الضيف، جلسات مصادقة، دمج قوائم الأمنيات والسلال، وإدارة محتوى ديناميكية. مصممة لتكون قابلة للتطوير العالي وتجربة مستخدم سلسة متعددة الأجهزة.",
+        "image": "/pro2.png",
+        "link": "https://www.e-ramo.net/en",
+        "github": "",
+        "tags": ["Next.js", "React", "RestApi", "Tailwind", "Node.js", "Auth"],
+        "hasGithub": false
+      },
+      {
+        "title": "نسخة ثريدز",
+        "description": "تطبيق دردشة فورية مبني باستخدام MERN stack و Socket.IO. يدعم المراسلة الفورية، التحديثات المباشرة، غرف دردشة متعددة، وتصميم متجاوب. يتضمن مصادقة المستخدم، محادثات ديناميكية، وتفاعلات فورية سلسة لتجربة دردشة حقيقية.",
+        "image": "/threads.png",
+        "link": "https://new-threads-clone-production.up.railway.app",
+        "github": "https://github.com/mEsam147/new-threads-clone",
+        "tags": ["MongoDB", "Express", "React", "Node.js", "Socket.IO", "Tailwind", "Realtime", "Auth"],
+        "hasGithub": true
+      },
+      {
+        "title": "نسخة سلاك",
+        "description": "منصة اتصال فريقية فورية مع مراسلة فورية، مكالمات فيديو مباشرة، قنوات متعددة، ومصادقة المستخدم. مبني للتعاون السلس وتصميم متجاوب.",
+        "image": "/slack.png",
+        "link": "https://slack-clone-9iyk.vercel.app/auth",
+        "github": "https://github.com/mEsam147/slack-clone",
+        "tags": ["MongoDB", "Express", "React", "Node.js", "Stream Chat", "Stream Video", "Tailwind", "Realtime", "Auth"],
+        "hasGithub": true
+      },
+      {
+        "title": "نسخة يوديمي",
+        "description": "منصة تعلم عبر الإنترنت كاملة مكررة ليوديمي. تتضمن الميزات إدارة الدورات، بث الفيديو، المدفوعات، مصادقة المستخدم، ولوحات تحكم قائمة على الأدوار للطلاب والمعلمين والمسؤولين مع الصلاحيات المناسبة. مصممة للتفاعل السلس وواجهة مستخدم متجاوبة.",
+        "image": "/udemy.png",
+        "link": "https://udemy-clone-sigma.vercel.app",
+        "github": "https://github.com/username/udemy-clone",
+        "tags": ["Next.js", "React", "Node.js", "Express", "MongoDB", "Stripe", "Cloudinary", "Tailwind CSS", "JWT", "Passport.js", "Admin Dashboard", "Instructor Dashboard", "Student Dashboard", "Role-Based Access"],
+        "hasGithub": true
+      },
+      {
+        "title": "نكست مارت",
+        "description": "منصة تجارة إلكترونية كاملة مبنية باستخدام Next.js و MERN stack. تتضمن الميزات كتالوج المنتجات، سلة التسوق، قائمة الأمنيات، دفع آمن، مصادقة المستخدم، ولوحة تحكم مسؤول لإدارة المنتجات والطلبات والمستخدمين. مصممة بواجهة مستخدم حديثة وتجربة سلسة متعددة الأجهزة.",
+        "image": "/nextmart.png",
+        "link": "https://new-ecommerce-5j95.vercel.app",
+        "github": "https://github.com/mEsam147/new-Ecommerce",
+        "tags": ["Next.js", "React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "Stripe", "JWT", "Admin Dashboard", "Auth", "E-Commerce"],
+        "hasGithub": true
+      },
+      {
+        "title": "نسخة لينكدإن",
+        "description": "منصة شبكة مهنية كاملة مكررة للينكدإن. تتضمن مصادقة المستخدم، إدارة الملف الشخصي، إنشاء المنشورات، تحديثات الشريط المباشرة، اتصالات، مراسلة، وتصميم متجاوب. مبنية ببنية MERN stack حديثة لتجربة مستخدم سلسة.",
+        "image": "/linkedin.png",
+        "link": "https://new-linkedin-clone-production.up.railway.app",
+        "github": "https://github.com/mEsam147/new-linkedin-clone",
+        "tags": ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "JWT", "Authentication", "Messaging", "Social Network", "Responsive UI"],
+        "hasGithub": true
+      },
+      {
+        "title": "نسخة إير بي إن بي",
+        "description": "نسخة كاملة من Airbnb تشتمل على دردشة فورية، إدارة الحجوزات، مصادقة المستخدم، قوائم العقارات، وإشعارات البريد الإلكتروني. مبنية باستخدام Socket.IO للمراسلة المباشرة، Express و Node.js للخلفية، MongoDB مع Mongoose لتخزين البيانات، وتصميم متجاوب باستخدام Tailwind CSS.",
+        "image": "/airbnb.png",
+        "link": "https://airbnb-clone-o9d8.vercel.app/en",
+        "github": "https://github.com/mEsam147/airbnb-clone",
+        "tags": ["React", "Node.js", "Express", "MongoDB", "Mongoose", "Socket.IO", "Email Services", "Tailwind CSS", "Authentication", "Booking System", "Real-time Chat", "Responsive UI"],
+        "hasGithub": true
+      }
+    ]
   },
   "contact": {
     "title": "اتصل بي",
